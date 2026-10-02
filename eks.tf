@@ -15,7 +15,8 @@ resource "aws_eks_cluster" "langfuse" {
   }
 
   access_config {
-    authentication_mode = var.authentication_mode
+    authentication_mode                         = var.authentication_mode
+    bootstrap_cluster_creator_admin_permissions = true
   }
 
   enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
@@ -153,5 +154,5 @@ resource "aws_iam_role_policy_attachment" "eks_service_policy" {
 
 resource "aws_cloudwatch_log_group" "eks" {
   name              = "/aws/eks/${var.name}/cluster"
-  retention_in_days = 30
+  retention_in_days = var.eks_log_retention_in_days
 } 

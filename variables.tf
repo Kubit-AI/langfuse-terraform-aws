@@ -56,6 +56,12 @@ variable "authentication_mode" {
   default     = "CONFIG_MAP"
 }
 
+variable "eks_log_retention_in_days" {
+  description = "Retention in days for the EKS control plane CloudWatch log group"
+  type        = number
+  default     = 30
+}
+
 variable "use_encryption_key" {
   description = "Whether to use an Encryption key for LLM API credential and integration credential store"
   type        = bool
