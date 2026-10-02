@@ -14,6 +14,10 @@ resource "aws_eks_cluster" "langfuse" {
     security_group_ids      = [aws_security_group.eks.id]
   }
 
+  access_config {
+    authentication_mode = var.authentication_mode
+  }
+
   enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   tags = {

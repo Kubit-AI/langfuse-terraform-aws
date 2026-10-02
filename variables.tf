@@ -50,6 +50,12 @@ variable "kubernetes_version" {
   default     = "1.32"
 }
 
+variable "authentication_mode" {
+  description = "EKS cluster authentication mode: CONFIG_MAP, API, or API_AND_CONFIG_MAP. Switching away from CONFIG_MAP is irreversible."
+  type        = string
+  default     = "CONFIG_MAP"
+}
+
 variable "use_encryption_key" {
   description = "Whether to use an Encryption key for LLM API credential and integration credential store"
   type        = bool
